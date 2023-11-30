@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace arrayTask1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int minRandomValue = 0;
+            int maxRandomValue = 10;
+            int lineSum = 0;
+            int columnMultiplication = 1;
+            int[,] numbers = new int[2, 4];
+            int columnIndex = 0;
+
+            for (int line = 0; line < numbers.GetLength(0); line++)
+            {
+                for (int column = 0; column < numbers.GetLength(1); column++)
+                {
+                    numbers[line, column] = random.Next(minRandomValue, maxRandomValue);
+                    Console.Write(numbers[line, column] + " ");
+
+                    if (line == 1)
+                    {
+                        lineSum += numbers[line, column];
+                    }
+                }
+
+                columnMultiplication *= numbers[line, columnIndex];
+                Console.WriteLine();
+            }
+
+            Console.WriteLine($"\nПроизведение первого столбца: {columnMultiplication}");
+            Console.WriteLine($"\nСумма второй строки: {lineSum}\n");
+        }
+    }
+}
