@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace arrayTask4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const string ExitCommand = "exit";
+            const string SumCommand = "sum";
+            
+            int arrayLength = 0;
+            bool isContinue = true;
+            int sumValue = 0;
+            int[] sumArray = new int[0];
+
+            while (isContinue)
+            {
+                Console.Clear();
+                Console.WriteLine("Длина массива для суммы: " + sumArray.Length + "\n");
+                string userInput = Console.ReadLine();
+                Console.WriteLine();
+
+                if (userInput == ExitCommand)
+                {
+                    isContinue = false;
+                }
+                else if (userInput == SumCommand)
+                {
+                    for (int i = 0; i < arrayLength; i++)
+                    {
+                        sumValue += sumArray[i];
+                    }
+
+                    Console.Clear();
+                    Console.WriteLine($"Сумма всех введённых чисел: {sumValue}\n");
+                    isContinue = false;
+                }
+                else if (int.TryParse(userInput, out int term))
+                {
+                    arrayLength++;
+                    int[] tempArray = new int[arrayLength];
+
+                    for (int i = 0; i < arrayLength-1; i++)
+                    {
+                        tempArray[i] = sumArray[i];
+                    }
+
+                    sumArray = tempArray; 
+                    sumArray[arrayLength - 1] = term;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Недопустимое вводимое значение! " +
+                        "Для продолжения, нажмите любую клавишу...\n");
+                    Console.ReadKey();
+                }
+            }
+        }
+    }
+}
