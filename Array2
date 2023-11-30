@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace arrayTask2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[,] array = new int[10, 10];
+            Random random = new Random();
+            int minRadomValue = 0;
+            int maxRandomValue = 10;
+            int maxArrayValue = 0;
+
+            for (int line = 0; line < array.GetLength(0); line++)
+            {
+                for (int column = 0; column < array.GetLength(1); column++)
+                {
+                    array[line, column] = random.Next(minRadomValue, maxRandomValue);
+                    Console.Write(array[line, column] + " ");
+
+                    if (array[line, column] > maxArrayValue)
+                    {
+                        maxArrayValue = array[line, column];
+                    }
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine($"\nНаибольшее значение среди элементов матрицы - {maxArrayValue}. Все элементы с этим значением заменим на 0.\n");
+
+            for (int line = 0; line < array.GetLength(0); line++)
+            {
+                for (int column = 0; column < array.GetLength(1); column++)
+                {
+                    if (array[line, column] == maxArrayValue)
+                    {
+                        array[line, column] = 0;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+
+                    Console.Write(array[line, column] + " ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+
+                Console.WriteLine();
+            }
+        }
+    }
+}
