@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace arrayTask3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = new int[60];
+            Random random = new Random();
+            int minRandomValue = 0;
+            int maxRandomValue = 10;
+
+            if (array.Length == 0)
+            {
+                Console.Write("Ошибка! Массив не влючает ни одно значение!");
+            }
+            else
+            {
+                for (int column = 0; column < array.Length; column++)
+                {
+                    array[column] = random.Next(minRandomValue, maxRandomValue);
+                    Console.Write(array[column] + " ");
+                }
+
+                Console.WriteLine("\n\nЛокальные максимумы:\n");
+
+                for (int column = 0; column < array.Length; column++)
+                {
+                    if (array.Length == 1)
+                    {
+                        Console.Write($"{array[column]} ");
+                    }
+                    else
+                    {
+                        if (column == 0)
+                        {
+                            if (array[column] > array[column + 1])
+                            {
+                                Console.Write($"{array[column]} ");
+                            }
+                        }
+                        else if (column > 0 && column < array.Length - 1)
+                        {
+                            if (array[column] > array[column - 1] && array[column] > array[column + 1])
+                            {
+                                Console.Write($"{array[column]} ");
+                            }
+                        }
+                        else if (column == array.Length - 1)
+                        {
+                            if (array[column] > array[column - 1])
+                            {
+                                Console.Write($"{array[column]} ");
+                            }
+                        }
+                    }
+                }
+            }
+            
+            Console.WriteLine("\n");
+        }
+    }
+}
