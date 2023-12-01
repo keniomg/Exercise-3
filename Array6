@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace arrayTask6
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = new int[20];
+            Random random = new Random();
+            int minRandomValue = 0;
+            int maxRandomValue = 10;
+            bool isSorted = false;
+            int[] tempArray = numbers;
+            int order = 0;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = random.Next(minRandomValue, maxRandomValue);
+                Console.Write(numbers[i] + " ");
+            }
+
+            while (isSorted == false)
+            {
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    if (numbers[order] > numbers[i])
+                    {
+                        tempArray[order] = numbers[i];
+                    }
+                }
+
+                order++;
+            }
+
+            Console.WriteLine();
+
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                Console.Write(tempArray[i] + " ");
+            }
+        }
+    }
+}
