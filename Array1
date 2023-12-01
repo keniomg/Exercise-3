@@ -24,15 +24,15 @@ namespace arrayTask1
                 {
                     numbers[line, column] = random.Next(minRandomValue, maxRandomValue);
                     Console.Write(numbers[line, column] + " ");
-
-                    if (line == 1)
-                    {
-                        lineSum += numbers[line, column];
-                    }
                 }
 
                 columnMultiplication *= numbers[line, columnIndex];
                 Console.WriteLine();
+            }
+
+            for (int column = 0; column < numbers.GetLength(1); column++)
+            {
+                lineSum += numbers[1, column];
             }
 
             Console.WriteLine($"\nПроизведение первого столбца: {columnMultiplication}");
