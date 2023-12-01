@@ -10,7 +10,7 @@ namespace arrayTask3
     {
         static void Main(string[] args)
         {
-            int[] array = new int[60];
+            int[] array = new int[30];
             Random random = new Random();
             int minRandomValue = 0;
             int maxRandomValue = 10;
