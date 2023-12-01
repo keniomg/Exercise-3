@@ -15,6 +15,7 @@ namespace arrayTask2
             int minRadomValue = 0;
             int maxRandomValue = 10;
             int maxArrayValue = 0;
+            int changedArrayValue = 0;
 
             for (int line = 0; line < array.GetLength(0); line++)
             {
@@ -40,7 +41,7 @@ namespace arrayTask2
                 {
                     if (array[line, column] == maxArrayValue)
                     {
-                        array[line, column] = 0;
+                        array[line, column] = changedArrayValue;
                         Console.ForegroundColor = ConsoleColor.Red;
                     }
 
