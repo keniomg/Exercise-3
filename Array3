@@ -10,49 +10,50 @@ namespace arrayTask3
     {
         static void Main(string[] args)
         {
-            int[] array = new int[30];
+            int[] numbers = new int[30];
             Random random = new Random();
             int minRandomValue = 0;
             int maxRandomValue = 10;
-            int minAllowedArraySize = 1;
+            int minAllowedNumbersArraySize = 1;
+            int lastNumbersIndex = numbers.Length - 1;
 
-            if (array.Length == 0)
+            if (numbers.Length == 0)
             {
                 Console.Write("Ошибка! Массив не влючает ни одно значение!");
                 return;
             }
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
-                array[i] = random.Next(minRandomValue, maxRandomValue);
-                Console.Write(array[i] + " ");
+                numbers[i] = random.Next(minRandomValue, maxRandomValue);
+                Console.Write(numbers[i] + " ");
             }
 
             Console.WriteLine("\n\nЛокальные максимумы:\n");
 
-            if (array.Length == minAllowedArraySize)
+            if (numbers.Length == minAllowedNumbersArraySize)
             {
-                Console.Write($"{array[0]}");
+                Console.Write($"{numbers[0]}");
                 Console.WriteLine("\n");
                 return;
             }
 
-            if (array[0] > array[1])
+            if (numbers[0] > numbers[1])
             {
-                Console.Write($"{array[0]} ");
+                Console.Write($"{numbers[0]} ");
             }
 
-            for (int i = 1; i < array.Length - 1; i++)
+            for (int i = 1; i < lastNumbersIndex; i++)
             {
-                if (array[i] > array[i - 1] && array[i] > array[i + 1])
+                if (numbers[i] > numbers[i - 1] && numbers[i] > numbers[i + 1])
                 {
-                    Console.Write($"{array[i]} ");
+                    Console.Write($"{numbers[i]} ");
                 }
             }
 
-            if (array[array.Length - 1] > array[array.Length - 2])
+            if (numbers[lastNumbersIndex] > numbers[lastNumbersIndex - 1])
             {
-                Console.Write($"{array[array.Length - 1]} ");
+                Console.Write($"{numbers[lastNumbersIndex]} ");
             }
 
             Console.WriteLine("\n");
