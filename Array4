@@ -13,15 +13,15 @@ namespace arrayTask4
             const string ExitCommand = "exit";
             const string SumCommand = "sum";
             
-            int arrayLength = 0;
+            int currentArrayLength = 0;
             bool isContinue = true;
             int sumValue = 0;
-            int[] sumArray = new int[0];
+            int[] sumNumbers = new int[0];
 
             while (isContinue)
             {
                 Console.Clear();
-                Console.WriteLine("Длина массива для суммы: " + sumArray.Length + "\n");
+                Console.WriteLine("Длина массива для суммы: " + sumNumbers.Length + "\n");
                 string userInput = Console.ReadLine();
                 Console.WriteLine();
 
@@ -31,9 +31,9 @@ namespace arrayTask4
                 }
                 else if (userInput == SumCommand)
                 {
-                    for (int i = 0; i < arrayLength; i++)
+                    for (int i = 0; i < currentArrayLength; i++)
                     {
-                        sumValue += sumArray[i];
+                        sumValue += sumNumbers[i];
                     }
 
                     Console.Clear();
@@ -42,16 +42,16 @@ namespace arrayTask4
                 }
                 else if (int.TryParse(userInput, out int term))
                 {
-                    arrayLength++;
-                    int[] tempArray = new int[arrayLength];
+                    currentArrayLength++;
+                    int[] tempArray = new int[currentArrayLength];
 
-                    for (int i = 0; i < arrayLength-1; i++)
+                    for (int i = 0; i < currentArrayLength-1; i++)
                     {
-                        tempArray[i] = sumArray[i];
+                        tempArray[i] = sumNumbers[i];
                     }
 
-                    sumArray = tempArray; 
-                    sumArray[arrayLength - 1] = term;
+                    sumNumbers = tempArray; 
+                    sumNumbers[currentArrayLength - 1] = term;
                 }
                 else
                 {
