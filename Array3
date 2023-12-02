@@ -14,54 +14,47 @@ namespace arrayTask3
             Random random = new Random();
             int minRandomValue = 0;
             int maxRandomValue = 10;
+            int minAllowedArraySize = 1;
 
             if (array.Length == 0)
             {
                 Console.Write("Ошибка! Массив не влючает ни одно значение!");
+                return;
             }
-            else
+
+            for (int i = 0; i < array.Length; i++)
             {
-                for (int column = 0; column < array.Length; column++)
-                {
-                    array[column] = random.Next(minRandomValue, maxRandomValue);
-                    Console.Write(array[column] + " ");
-                }
+                array[i] = random.Next(minRandomValue, maxRandomValue);
+                Console.Write(array[i] + " ");
+            }
 
-                Console.WriteLine("\n\nЛокальные максимумы:\n");
+            Console.WriteLine("\n\nЛокальные максимумы:\n");
 
-                for (int column = 0; column < array.Length; column++)
+            if (array.Length == minAllowedArraySize)
+            {
+                Console.Write($"{array[0]}");
+                Console.WriteLine("\n");
+                return;
+            }
+
+            if (array[0] > array[1])
+            {
+                Console.Write($"{array[0]} ");
+            }
+
+            for (int i = 1; i < array.Length - 1; i++)
+            {
+                if (array[i] > array[i - 1] && array[i] > array[i + 1])
                 {
-                    if (array.Length == 1)
-                    {
-                        Console.Write($"{array[column]} ");
-                    }
-                    else
-                    {
-                        if (column == 0)
-                        {
-                            if (array[column] > array[column + 1])
-                            {
-                                Console.Write($"{array[column]} ");
-                            }
-                        }
-                        else if (column > 0 && column < array.Length - 1)
-                        {
-                            if (array[column] > array[column - 1] && array[column] > array[column + 1])
-                            {
-                                Console.Write($"{array[column]} ");
-                            }
-                        }
-                        else if (column == array.Length - 1)
-                        {
-                            if (array[column] > array[column - 1])
-                            {
-                                Console.Write($"{array[column]} ");
-                            }
-                        }
-                    }
+                    Console.Write($"{array[i]} ");
                 }
             }
-            
+
+            if (array[array.Length - 1] > array[array.Length - 2])
+            {
+                Console.Write($"{array[array.Length - 1]} ");
+            }
+
             Console.WriteLine("\n");
         }
     }
