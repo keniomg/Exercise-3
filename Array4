@@ -13,9 +13,7 @@ namespace arrayTask4
             const string ExitCommand = "exit";
             const string SumCommand = "sum";
             
-            int currentArrayLength = 0;
             bool isContinue = true;
-            int sumValue = 0;
             int[] sumNumbers = new int[0];
 
             while (isContinue)
@@ -31,33 +29,35 @@ namespace arrayTask4
                 }
                 else if (userInput == SumCommand)
                 {
-                    for (int i = 0; i < currentArrayLength; i++)
+                    int sumValue = 0;
+
+                    for (int i = 0; i < sumNumbers.Length; i++)
                     {
                         sumValue += sumNumbers[i];
                     }
 
                     Console.Clear();
-                    Console.WriteLine($"Сумма всех введённых чисел: {sumValue}\n");
-                    isContinue = false;
+                    Console.WriteLine($"Сумма всех введённых чисел: {sumValue}\n\nДля продолжения нажмите на любую клавишу...\n");
+                    Console.ReadKey();
+                    sumNumbers = new int[0];
                 }
                 else if (int.TryParse(userInput, out int term))
                 {
-                    currentArrayLength++;
-                    int[] tempArray = new int[currentArrayLength];
+                    int[] tempArray = new int[sumNumbers.Length + 1];
 
-                    for (int i = 0; i < currentArrayLength-1; i++)
+                    for (int i = 0; i < sumNumbers.Length; i++)
                     {
                         tempArray[i] = sumNumbers[i];
                     }
 
                     sumNumbers = tempArray; 
-                    sumNumbers[currentArrayLength - 1] = term;
+                    sumNumbers[sumNumbers.Length - 1] = term;
                 }
                 else
                 {
                     Console.Clear();
                     Console.WriteLine("Недопустимое вводимое значение! " +
-                        "Для продолжения, нажмите любую клавишу...\n");
+                        "Для продолжения нажмите любую клавишу...\n");
                     Console.ReadKey();
                 }
             }
