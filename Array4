@@ -14,12 +14,12 @@ namespace arrayTask4
             const string SumCommand = "sum";
             
             bool isContinue = true;
-            int[] sumNumbers = new int[0];
+            int[] numbers = new int[0];
 
             while (isContinue)
             {
                 Console.Clear();
-                Console.WriteLine("Длина массива для суммы: " + sumNumbers.Length + "\n");
+                Console.WriteLine("Длина массива для суммы: " + numbers.Length + "\n");
                 string userInput = Console.ReadLine();
                 Console.WriteLine();
 
@@ -31,27 +31,27 @@ namespace arrayTask4
                 {
                     int sumValue = 0;
 
-                    for (int i = 0; i < sumNumbers.Length; i++)
+                    for (int i = 0; i < numbers.Length; i++)
                     {
-                        sumValue += sumNumbers[i];
+                        sumValue += numbers[i];
                     }
 
                     Console.Clear();
                     Console.WriteLine($"Сумма всех введённых чисел: {sumValue}\n\nДля продолжения нажмите на любую клавишу...\n");
                     Console.ReadKey();
-                    sumNumbers = new int[0];
+                    numbers = new int[0];
                 }
-                else if (int.TryParse(userInput, out int term))
+                else if (int.TryParse(userInput, out int _))
                 {
-                    int[] tempArray = new int[sumNumbers.Length + 1];
+                    int[] tempArray = new int[numbers.Length + 1];
 
-                    for (int i = 0; i < sumNumbers.Length; i++)
+                    for (int i = 0; i < numbers.Length; i++)
                     {
-                        tempArray[i] = sumNumbers[i];
+                        tempArray[i] = numbers[i];
                     }
 
-                    sumNumbers = tempArray; 
-                    sumNumbers[sumNumbers.Length - 1] = term;
+                    numbers = tempArray;
+                    numbers[numbers.Length - 1] = Convert.ToInt32(userInput);
                 }
                 else
                 {
