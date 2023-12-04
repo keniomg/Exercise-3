@@ -41,7 +41,7 @@ namespace arrayTask4
                     Console.ReadKey();
                     numbers = new int[0];
                 }
-                else if (int.TryParse(userInput, out int _))
+                else if (int.TryParse(userInput, out int number))
                 {
                     int[] tempArray = new int[numbers.Length + 1];
 
@@ -51,7 +51,7 @@ namespace arrayTask4
                     }
 
                     numbers = tempArray;
-                    numbers[numbers.Length - 1] = Convert.ToInt32(userInput);
+                    numbers[numbers.Length - 1] = number;
                 }
                 else
                 {
