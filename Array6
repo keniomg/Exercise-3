@@ -4,22 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace arrayTask6
+namespace arrayTask2
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int[] numbers = new int[20];
+            int[] numbers = new int[30];
             Random random = new Random();
             int minRandomValue = 0;
             int maxRandomValue = 10;
-            bool isSorted = false;
-            int[] tempNumbers = new int [numbers.Length];
-            int order = 0;
-            int indexToSkip = 0;
-            int[] tempIndexesToSkip = new int[0];
-            int[] indexesToSkip = new int[1];
+            Console.WriteLine("Дан массив:\n");
 
             for (int i = 0; i < numbers.Length; i++)
             {
@@ -27,60 +22,27 @@ namespace arrayTask6
                 Console.Write(numbers[i] + " ");
             }
 
-            for (int i = 0; i < numbers.Length; i++)
+            for (var i = 1; i < numbers.Length; i++)
             {
-                tempNumbers[i] = numbers[i];
-            }
-
-            while (isSorted == false)
-            {
-
-                for (int i = 0; i < numbers.Length; i++)
+                for (var j = 0; j < numbers.Length - i; j++)
                 {
-                    if (tempNumbers[order] >= numbers[i] && (tempIndexesToSkip.Contains(i)) == false && (tempIndexesToSkip.Length - i == 0) == false)
+                    if (numbers[j] > numbers[j + 1])
                     {
-                        tempNumbers[order] = numbers[i];
-                        indexToSkip = i;
+                        int tempNumber = numbers[j];
+                        numbers[j] = numbers[j + 1];
+                        numbers[j + 1] = tempNumber;
                     }
                 }
-
-                order++;
-
-                if (order == 19)
-                {
-                    Console.WriteLine("19");
-                }
-
-                tempIndexesToSkip = new int[order];
-
-                for (int i = 0; i < indexesToSkip.Length; i++)
-                {
-                    tempIndexesToSkip[i] = indexesToSkip[i];
-                }
-                
-                tempIndexesToSkip[order - 1] = indexToSkip;
-                indexesToSkip = tempIndexesToSkip;
-
-
-
-                if (order == numbers.Length - 1)
-                {
-                    isSorted = true;
-                }
             }
 
-            Console.WriteLine();
+            Console.WriteLine("\n\nОн же после сортировки:\n");
 
-            for (int i = 0; i < tempNumbers.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
-                Console.Write(tempNumbers[i] + " ");
+                Console.Write(numbers[i] + " ");
             }
+
+            Console.WriteLine("\n");
         }
     }
 }
-
-// 4 6 8 3 7 2 6 9 4
-
-// 4 6 8 3 7 2 6 9 4
-
-// 
