@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace arrayTask8
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = new int[10];
+            Random random = new Random();
+            int minRandomValue = 0;
+            int maxRandomValue = 10;
+            int tempNumber = 0;
+            Console.WriteLine("Дан массив:\n");
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = random.Next(minRandomValue, maxRandomValue);
+                Console.Write(numbers[i] + " ");
+            }
+
+            Console.WriteLine("\n\nВведите число сдвигов влево:\n");
+            int userInput = Convert.ToInt32(Console.ReadLine());
+            int shiftValue = userInput % numbers.Length;
+            Console.Write("\nНаш массив после сдвига:\n\n");
+
+            for (int i = 0; i < shiftValue; i++)
+            {
+                tempNumber = numbers[0];
+
+                for (int j = 0; j < numbers.Length - 1; j++)
+                {
+                    numbers[j] = numbers[j + 1];
+                }
+
+                numbers[numbers.Length - 1] = tempNumber;
+            }
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.Write(numbers[i] + " ");
+            }
+
+            Console.WriteLine("\n");
+            Console.ReadKey();
+        }
+    }
+}
